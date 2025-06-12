@@ -1,0 +1,5 @@
+{
+  "name": "דירות נופש",
+  "description": "אפליקציית ווב להצגת רשימת דירות נופש עם פרטים לכל דירה, מעוצבת עם Tailwind CSS.",
+  "requestFramePermissions": []
+}

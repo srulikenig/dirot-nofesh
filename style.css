@@ -1,0 +1,57 @@
+
+body {
+  font-family: 'Assistant', sans-serif;
+  direction: rtl; /* Ensure RTL direction is applied consistently */
+  -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
+}
+
+/* Ensure cards in a row try to maintain similar height based on content */
+.h-full-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom font medium for amenities if Tailwind's default is too light/heavy */
+.font-medium_custom {
+  font-weight: 500; /* Adjust as needed, Tailwind's default 'font-medium' is 500 */
+}
+
+/* Utility for line clamping text (requires Tailwind JIT or adding to config) */
+/* If not using JIT, you might need a more general CSS approach or a plugin */
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Premium badge specific styles if needed beyond Tailwind */
+/* Example: .premium-badge { ... } */
+
+/* Ad card specific styles if needed beyond Tailwind */
+/* Example: .ad-card-identifier { ... } */
+
+/* Styling for a bit more "pop" on interactive elements */
+button:focus, a:focus {
+  outline: 2px solid theme('colors.sky.400');
+  outline-offset: 2px;
+}
+
+/* Enhanced scrollbar for a more modern look (optional, Webkit only) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* Tailwind's coolGray-300 */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* Tailwind's coolGray-400 */
+}
+

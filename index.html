@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דירות נופש פרימיום - מצאו את החופשה המושלמת</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Tailwind CSS configuration (optional, for JIT benefits or customizations)
+        //tailwind.config = {
+        //  theme: {
+        //    extend: {
+        //      // You can extend Tailwind's theme here
+        //    }
+        //  },
+        //  plugins: [
+        //    // require('@tailwindcss/line-clamp'), // If you install this plugin
+        //  ]
+        //}
+    </script>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/"
+  }
+}
+</script>
+</head>
+
+<body class="bg-gradient-to-br from-sky-50 via-slate-50 to-indigo-100 min-h-screen text-slate-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-sky-700 tracking-tight leading-tight">
+                <span class="block">דירות נופש מומלצות</span>
+                <span class="block text-sky-500 text-3xl sm:text-4xl mt-1">מצאו את המקום המושלם לחופשה הבאה שלכם</span>
+            </h1>
+            <p class="text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
+                גלו מבחר דירות יוקרה, סוויטות מפנקות ובקתות קסומות ברחבי הארץ. חופשה איכותית מתחילה כאן.
+            </p>
+        </header>
+
+        <section id="search-section" class="mb-10 p-6 bg-white/80 backdrop-blur-md rounded-xl shadow-lg">
+            <form id="search-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 items-end">
+                <div>
+                    <label for="search-text" class="block text-sm font-medium text-slate-700 mb-1">חיפוש חופשי</label>
+                    <input type="search" id="search-text" name="search-text" placeholder="שם הדירה, תיאור, רחוב..."
+                        class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 transition-colors">
+                </div>
+                <div>
+                    <label for="search-city" class="block text-sm font-medium text-slate-700 mb-1">עיר</label>
+                    <input type="text" id="search-city" name="search-city" placeholder="לדוגמה: תל אביב"
+                        class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 transition-colors">
+                </div>
+                <div class="grid grid-cols-2 gap-x-3">
+                    <div>
+                        <label for="min-price" class="block text-sm font-medium text-slate-700 mb-1">מחיר מינימלי
+                            (₪)</label>
+                        <input type="number" id="min-price" name="min-price" placeholder="0" min="0"
+                            class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 transition-colors">
+                    </div>
+                    <div>
+                        <label for="max-price" class="block text-sm font-medium text-slate-700 mb-1">מחיר מקסימלי
+                            (₪)</label>
+                        <input type="number" id="max-price" name="max-price" placeholder="ללא הגבלה" min="0"
+                            class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 transition-colors">
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 sm:col-span-2 lg:col-span-1">
+                    <button type="submit"
+                        class="w-full flex-1 bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2.5 px-4 rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-75">
+                        חיפוש
+                    </button>
+                    <button type="reset" id="clear-filters-button"
+                        class="w-full flex-1 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-2.5 px-4 rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-opacity-75">
+                        ניקוי
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <div id="loading-indicator" class="flex flex-col justify-center items-center min-h-[300px]">
+            <div class="animate-spin rounded-full h-20 w-20 sm:h-24 sm:w-24 border-t-4 border-b-4 border-sky-500"></div>
+            <p class="mt-6 rtl:mr-4 text-xl text-sky-600 font-semibold">טוען דירות וחוויות...</p>
+        </div>
+
+        <p id="no-items-message" class="text-center text-slate-600 text-lg py-10" style="display: none;">לא נמצאו דירות
+            או הצעות התואמות את החיפוש שלך. נסו לשנות את תנאי החיפוש או נקו סינונים.</p>
+
+        <main>
+            <div id="apartments-grid"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-6 gap-y-8 md:gap-x-8 md:gap-y-10"
+                style="display: none;">
+                <!-- Apartment and Ad cards will be injected here by JavaScript -->
+            </div>
+        </main>
+
+        <footer class="text-center mt-16 md:mt-24 py-8 border-t border-sky-200">
+            <p class="text-sky-700">&copy; </span>kenig91255@gmail.com</p>
+        </footer>
+    </div>
+    <!-- Order of scripts is important: mockData first, then script.js -->
+    <script type="module" src="./services/mockData.js"></script>
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
